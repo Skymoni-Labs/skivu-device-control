@@ -90,8 +90,10 @@ async function resume(){if(connection){const state=await status();if(state.appro
 window.addEventListener('focus',()=>job(resume));
 window.Skivu?.on('host.resume',()=>job(resume));
 window.Skivu?.on('context.changed',context=>{
+  const nextKey=`last-task:${context.spaceId || 'manual'}`;
+  if(nextKey===lastTaskKey)return;
   clearInterval(timer);timer=null;taskId=null;active=false;
-  lastTaskKey=`last-task:${context.spaceId || 'manual'}`;$('goal').value='';$('prepared-draft').hidden=true;
+  lastTaskKey=nextKey;$('goal').value='';$('prepared-draft').hidden=true;
   $('start').disabled=false;$('stop').disabled=true;
   $('task-state').textContent='尚未开始';$('actions').textContent='0';$('rounds').textContent='0';
   $('summary').textContent='上下文已切换。已启动的任务可从通知停止，新任务需要重新核对。';
