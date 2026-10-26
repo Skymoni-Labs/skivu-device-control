@@ -2,7 +2,9 @@
 
 Independent Android phone-control plugin for Skivu. The plugin owns its task UI and ships separately from the host APK; actual device input is provided by a separately installed, manually paired [device companion](https://github.com/skyjjgw/skivu-device-bridge).
 
-**Development preview.** Released Skivu build44 does not expose the new task methods. The host integration is developed on `feature/device-control-20261026`; availability must be checked with `host.info`. The package requires the eventual compatible host (provisional minimum 0.2.42). Do not advertise this as already activated in the public market.
+**Development preview.** Ordinary build44/45 does not expose the new device-task methods. Use the [separate host preview](https://github.com/skyjjgw/skivu/releases/tag/device-control-preview-20261027), which installs alongside the ordinary App, or build `feature/device-control-20261026`. This is not activated in the public market/update channel. The package requires compatible host0.2.42 and checks `host.info`.
+
+[中文安装与使用](docs/getting-started.zh-CN.md) · [Verification and limits](docs/verification.md)
 
 ## Implemented
 
@@ -11,6 +13,7 @@ Independent Android phone-control plugin for Skivu. The plugin owns its task UI 
 - Real UI-tree observation, launch, node input, taps and scrolling through the companion.
 - Asynchronous task state, notification stop control and no automatic replay after uncertain execution.
 - Separate task planning through the host's existing account/beta/custom-model transport. The plugin receives no host credentials.
+- Optional role-chat `prepare_task` tool: CAS-save a role/chat-scoped draft, return a card, then open the foreground plugin for separate task consent. The short tool never reads or operates the phone.
 
 This initial version plans from **text UI trees**. Screenshot-based model planning and downloadable application-specific workflows remain later milestones. Android OEM behavior and real model success rates need their own tests; mock planning is never counted as real-model validation.
 
@@ -18,8 +21,8 @@ This initial version plans from **text UI trees**. Screenshot-based model planni
 
 ```sh
 npm test
-python tools/build_web_plugin.py src --output packages/device-control-0.1.0.skivu.json
-python tools/build_web_plugin.py --check packages/device-control-0.1.0.skivu.json
+python tools/build_web_plugin.py src --output packages/device-control-0.1.1.skivu.json
+python tools/build_web_plugin.py --check packages/device-control-0.1.1.skivu.json
 ```
 
 The build tool is derived from the GPL-3.0 Skivu SDK builder. Assets and package serialization are deterministic. Installing the package does not grant accessibility; the user must install and authorize the companion and approve each task.

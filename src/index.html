@@ -2,8 +2,10 @@
 <body><main>
 <header><div class="mark">↗</div><div><p class="eyebrow">SKIVU · DEVICE CONTROL</p><h1>让想法，落在手机上</h1><p>连接自己的设备，交代一个任务，随时接管。</p></div></header>
 <div id="notice" role="status" aria-live="polite" hidden></div>
+<p id="prepared-draft" hidden></p>
+<button id="role-settings" class="text-button">绑定到角色 / 聊天任务草稿</button>
 <section class="card"><div class="heading"><span class="number">01</span><h2>连接设备伴侣</h2><span id="connection-state" class="badge">未连接</span></div>
-<p>第一次使用，需要安装独立的 Android 伴侣，并亲自开启无障碍、批准连接。</p>
+<p>需要 Android 11 或更新系统。第一次使用，请安装独立伴侣，并亲自开启无障碍、批准连接。</p>
 <div class="row"><select id="companions" aria-label="设备伴侣"><option value="">先查找设备伴侣</option></select><button id="discover" class="secondary">查找</button></div>
 <div class="row"><button id="connect">连接并请求配对</button><button id="approve" class="secondary">打开伴侣批准</button><button id="refresh" class="secondary">检查连接</button></div>
 <button id="download" class="text-button">获取 Android 伴侣 ↗</button></section>
@@ -17,5 +19,5 @@
 <section class="card" id="task-panel"><div class="heading"><span class="number">03</span><h2>任务进度</h2><span id="task-state" class="badge">尚未开始</span></div>
 <p id="summary">每一步都以设备真实回执为依据。</p><div class="metrics"><div><strong id="actions">0</strong><span>设备操作</span></div><div><strong id="rounds">0</strong><span>模型请求</span></div></div>
 <div class="row"><button id="task-refresh" class="secondary">刷新状态</button><button id="task-confirm" class="secondary">打开动作确认</button><button id="stop" class="danger">停止任务</button></div></section>
-<footer>真实设备 · 独立授权 · 任务有上限<br>0.1.0 · 文字界面规划 · 截图规划仍在后续阶段</footer>
+<footer>真实设备 · 独立授权 · 任务有上限<br>0.1.1 · 文字界面规划 · 截图规划仍在后续阶段</footer>
 </main><script type="module" src="app.js"></script></body></html>

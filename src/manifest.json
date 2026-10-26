@@ -3,14 +3,24 @@
   "apiVersion": "1.0",
   "id": "org.skivu.device-control",
   "name": "手机操控",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "minHostVersion": "0.2.42",
   "author": "Skymoni / Skivu community",
   "description": "通过你人工配对的独立 Android 设备伴侣，执行有步骤和时间上限的真实手机任务。",
   "license": "GPL-3.0-only",
   "source": "https://github.com/skyjjgw/skivu-device-control",
   "entry": "index.html",
-  "permissions": ["storage", "device.observe", "device.control", "agent.tasks", "external.open"],
+  "permissions": ["storage", "device.observe", "device.control", "agent.tasks", "external.open", "chat.tools"],
   "networkDomains": [],
-  "contributes": {"launcher": true, "chatActions": [{"id": "new-task", "title": "手机操控任务"}]}
+  "contributes": {"launcher": true, "chatSurface": false,
+    "chatActions": [{"id": "new-task", "title": "手机操控任务"}],
+    "roleCompanion": {"title": "手机操控", "entry": "tool-runtime.html", "tools": [{
+      "id": "prepare_task", "effect": "write",
+      "description": "按用户明确要求准备真实 Android 手机任务草稿，只保存本机草稿并返回待确认卡片，不连接设备、不读屏、不执行。用户需打开卡片选择软件并单独确认任务。",
+      "parameters": {"type": "object", "properties": {
+        "goal": {"type": "string", "maxLength": 4000, "description": "用户明确要求的任务，保留对象、内容和提交边界。"},
+        "appHint": {"type": "string", "maxLength": 120, "description": "软件名称提示，仅用于显示，不能作为授权包名。"}
+      }, "required": ["goal"], "additionalProperties": false}
+    }]}
+  }
 }

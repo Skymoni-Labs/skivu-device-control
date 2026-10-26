@@ -1,0 +1,11 @@
+Skivu Device Control
+Copyright Skymoni / Skivu community
+License: GPL-3.0-only
+Source: https://github.com/skyjjgw/skivu-device-control
+
+The package builder is derived from the GPL-3.0-only Skivu open-plugin SDK,
+including role-companion validation from skyjjgw/skivu-plugins
+(source tree 6a81a051ff4885bc87e22ae2c9d3f352767a130a), with device permission extensions.
+Host SDK code is provided by the installed host, not bundled into this package.
+Android input belongs to the separately licensed MIT Device Bridge companion,
+derived from PhoneUse v1.3.0; it is not bundled into this Web package.
