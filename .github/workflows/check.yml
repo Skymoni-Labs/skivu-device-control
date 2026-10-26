@@ -19,5 +19,6 @@ jobs:
       - run: npm test
       - run: python tools/build_web_plugin.py --check packages/device-control-0.1.0.skivu.json
       - run: python tools/build_web_plugin.py --check packages/device-control-0.1.1.skivu.json
+      - run: python tools/build_web_plugin.py --check packages/device-control-0.2.0.skivu.json
       - run: python tools/build_web_plugin.py src --output rebuilt.skivu.json
-      - run: cmp rebuilt.skivu.json packages/device-control-0.1.1.skivu.json
+      - run: cmp rebuilt.skivu.json packages/device-control-0.2.0.skivu.json
