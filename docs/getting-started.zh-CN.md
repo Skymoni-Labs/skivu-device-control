@@ -2,7 +2,7 @@
 
 这套功能由三个独立部分组成：Skivu宿主、手机操控Web插件、Android设备伴侣。当前为开发预览，未加入正式更新和市场目录。需要Android11或更新系统；已验证API36模拟器，尚未验证厂商实体机与真实模型成功率。
 
-1. 安装[独立宿主预览](https://github.com/skyjjgw/skivu/releases/tag/device-control-preview-20261027)。名称为“Skivu 操控预览”，包名`com.skyjjgw.independent.ski.devicepreview`，可与原App并存，数据独立。它使用正常App入口和真实模型调用路径，不含固定QA规划器。后续手动更新预览包；不要通过此预览尝试覆盖正式App。
+1. 从[宿主功能分支](https://github.com/skyjjgw/skivu/tree/feature/device-control-20261026)构建独立预览：`flutter build apk --release --dart-define=SKIVU_DEVICE_PREVIEW=true`。已编译验收的APK本次仅本地交付，未公开上传GitHub。名称为“Skivu 操控预览”，包名`com.skyjjgw.independent.ski.devicepreview`，可与原App并存，数据独立。它使用正常App入口和真实模型调用路径，不含固定QA规划器。后续手动更新预览包；不要通过此预览尝试覆盖正式App。
 2. 在宿主配置自己的可用模型连接，或通过正常账号界面使用已开放模型。模型调用会按所选连接计费。插件拿不到宿主模型密钥。
 3. 下载并安装[设备伴侣0.1.0](https://github.com/skyjjgw/skivu-device-bridge/releases/tag/v0.1.0)。在伴侣中打开系统无障碍设置，亲自启用服务。日常同机操作不需要Root、ADB或电脑。
 4. 下载[手机操控插件0.1.1](https://github.com/skyjjgw/skivu-device-control/releases/tag/v0.1.1)中的`.skivu.json`，在宿主插件管理中点击“导入插件”，安装并核对权限后启用。
@@ -15,4 +15,4 @@
 
 文字界面模式不支持所有自绘控件；截图模型规划、暂停/恢复和专用软件流程尚未实现。模型可能规划错误，不应把点击回执当作外部交易完成证明。完整边界见[验收记录](verification.md)。
 
-个人仓库是主仓库；组织副本：[插件](https://github.com/Skymoni-Labs/skivu-device-control)、[伴侣](https://github.com/Skymoni-Labs/skivu-device-bridge)、[宿主预览](https://github.com/Skymoni-Labs/skivu/releases/tag/device-control-preview-20261027)。
+个人仓库是主仓库；组织副本：[插件](https://github.com/Skymoni-Labs/skivu-device-control)、[伴侣](https://github.com/Skymoni-Labs/skivu-device-bridge)、[宿主功能分支](https://github.com/Skymoni-Labs/skivu/tree/feature/device-control-20261026)。

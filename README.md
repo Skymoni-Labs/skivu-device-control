@@ -2,7 +2,7 @@
 
 Independent Android phone-control plugin for Skivu. The plugin owns its task UI and ships separately from the host APK; actual device input is provided by a separately installed, manually paired [device companion](https://github.com/skyjjgw/skivu-device-bridge).
 
-**Development preview.** Ordinary build44/45 does not expose the new device-task methods. Use the [separate host preview](https://github.com/skyjjgw/skivu/releases/tag/device-control-preview-20261027), which installs alongside the ordinary App, or build `feature/device-control-20261026`. This is not activated in the public market/update channel. The package requires compatible host0.2.42 and checks `host.info`.
+**Development preview.** Ordinary build44/45 does not expose the new device-task methods. Build the [host feature branch](https://github.com/skyjjgw/skivu/tree/feature/device-control-20261026) using the separate-preview flag described in the setup guide. This is not activated in the public market/update channel. The package requires compatible host0.2.42 and checks `host.info`. A compiled host preview was verified locally; its binary is not published on GitHub.
 
 [中文安装与使用](docs/getting-started.zh-CN.md) · [Verification and limits](docs/verification.md)
 
