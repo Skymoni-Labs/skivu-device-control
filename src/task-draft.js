@@ -1,5 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Chat tools prepare local drafts; no device or model calls are made here.
+export function newDraftId(provider=globalThis.crypto) {
+  if(typeof provider?.randomUUID==='function')return provider.randomUUID();
+  if(typeof provider?.getRandomValues!=='function')throw new Error('当前系统 WebView 不支持安全随机数，请更新 Android System WebView 后重试。');
+  const bytes=provider.getRandomValues(new Uint8Array(16));
+  bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;
+  const hex=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+  return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
+}
 export function draftKey(context) {
   if (context?.roleBound !== true || !/^[a-f0-9]{64}$/.test(context?.spaceId || '') ||
       typeof context.roleId !== 'string' || !context.roleId ||
@@ -19,7 +27,7 @@ export function validateDraftArguments(args) {
 }
 export async function prepareDraft(call,args,context) {
   const key=draftKey(context),input=validateDraftArguments(args);
-  const value={...input,id:crypto.randomUUID(),roleId:context.roleId,
+  const value={...input,id:newDraftId(),roleId:context.roleId,
     chatId:context.chatId,spaceId:context.spaceId,state:'prepared'};
   const previous=await call('storage.get',{key});
   await call('storage.compareAndSet',{key,expected:previous ?? null,value});

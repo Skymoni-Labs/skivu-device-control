@@ -10,4 +10,4 @@ Skivu.on('companion.invoke',async event=>{
   } catch(error) { result={success:false,summary:error?.message || '任务草稿未保存。'}; }
   await Skivu.call('runtime.complete',{result});
 });
-await Skivu.call('runtime.ready',{});
+Skivu.call('runtime.ready',{}).catch(()=>{});

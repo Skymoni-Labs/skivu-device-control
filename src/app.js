@@ -25,7 +25,7 @@ async function status(){
   return state;
 }
 async function discover(){
-  const items=await call('device.discover');$('companions').replaceChildren();
+  const items=await call('device.discover');$('companions').textContent='';
   for(const item of items || []){const option=document.createElement('option');option.value=item.component;option.textContent=`${item.label} · ${item.signerSha256?.slice(0,8) || ''}`;option.dataset.signer=item.signerSha256 || '';$('companions').append(option);}
   if(!items?.length)notice('尚未找到设备伴侣。请下载安装后返回刷新。');
   const saved=selectSavedCompanion(items || [],profile);
@@ -35,7 +35,7 @@ async function discover(){
 async function loadApps(){
   const state=await status();if(!state.approved)throw new Error('请先在设备伴侣中信任客户端。');
   const selected=$('apps').value || profile?.app || '';
-  const value=await call('device.apps',{connectionId:connection});$('apps').replaceChildren();
+  const value=await call('device.apps',{connectionId:connection});$('apps').textContent='';
   const empty=document.createElement('option');empty.value='';empty.textContent='请选择允许操作的软件';$('apps').append(empty);
   for(const item of value.apps || []){const option=document.createElement('option');option.value=item.package_name;option.textContent=item.label;$('apps').append(option);}
   if([...$('apps').options].some(option=>option.value===selected))$('apps').value=selected;

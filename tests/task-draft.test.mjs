@@ -1,7 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {prepareDraft,readDraft,draftKey} from '../src/task-draft.js';
+import {prepareDraft,readDraft,draftKey,newDraftId} from '../src/task-draft.js';
+import {webcrypto} from 'node:crypto';
 const context={roleBound:true,roleId:'role-a',chatId:'chat-a',spaceId:'a'.repeat(64)};
+test('older WebViews without randomUUID still get secure independent v4 draft identities',()=>{
+  const provider={getRandomValues:bytes=>webcrypto.getRandomValues(bytes)};
+  const a=newDraftId(provider),b=newDraftId(provider);
+  assert.match(a,/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
+  assert.notEqual(a,b);
+});
+test('missing secure randomness fails clearly instead of creating a weak draft identity',()=>{
+  assert.throws(()=>newDraftId({}),/WebView/);
+});
 function storage() {
   const values=new Map(),calls=[];
   return {calls,call:async(method,p)=>{
