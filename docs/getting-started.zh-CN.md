@@ -4,7 +4,7 @@
 
 1. 从[宿主功能分支](https://github.com/skyjjgw/skivu/tree/feature/device-control-20261026)构建独立预览：`flutter build apk --release --dart-define=SKIVU_DEVICE_PREVIEW=true`。已编译验收的APK本次仅本地交付，未公开上传GitHub。名称为“Skivu 操控预览”，包名`com.skyjjgw.independent.ski.devicepreview`，可与原App并存，数据独立。它使用正常App入口和真实模型调用路径，不含固定QA规划器。后续手动更新预览包；不要通过此预览尝试覆盖正式App。
 2. 在宿主配置自己的可用模型连接，或通过正常账号界面使用已开放模型。模型调用会按所选连接计费。插件拿不到宿主模型密钥。
-3. 下载并安装[设备伴侣0.2.0预览包](https://github.com/skyjjgw/skivu-device-bridge/releases/tag/v0.2.0)，或构建当前源码（`gradle -p skivu :app:assembleDebug`）。在伴侣中打开系统无障碍设置，亲自启用服务。0.2功能需0.2伴侣；旧0.1包不提供持续信任。日常同机操作不需要Root、ADB或电脑。
+3. 下载并安装[设备伴侣0.2.1预览包](https://github.com/skyjjgw/skivu-device-bridge/releases/tag/v0.2.1)，或构建当前源码（`gradle -p skivu :app:assembleDebug`）。在伴侣中打开系统无障碍设置，亲自启用服务。0.2功能需0.2伴侣；旧0.1包不提供持续信任。日常同机操作不需要Root、ADB或电脑。
 4. 下载[手机操控0.2.0预览包](https://github.com/skyjjgw/skivu-device-control/releases/tag/v0.2.0)中的 `device-control-0.2.0.skivu.json`，在宿主插件管理中点击“导入插件”，核对并启用包含“直接操控”的权限。更新包变化会要求重新确认，旧授权不会静默扩大。
 5. 在插件页查找设备伴侣、连接，打开伴侣核对客户端包名与签名，点击“信任此客户端，后续直接操控并返回”。这是一次性设置。旧客户端可在伴侣中明确改为直接操控。
 6. 选择一个允许操作的软件，填写明确任务，核对当前模型、软件范围、步骤和时间预算后开始。此后不再为连接、启动和每个动作弹窗。密码、验证码和系统授权由自己处理。默认20动作、15轮、300秒；最高30动作、30轮、600秒。
