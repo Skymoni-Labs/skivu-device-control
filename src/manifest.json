@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": "1.0",
+  "id": "org.skivu.device-control",
+  "name": "手机操控",
+  "version": "0.1.0",
+  "minHostVersion": "0.2.42",
+  "author": "Skymoni / Skivu community",
+  "description": "通过你人工配对的独立 Android 设备伴侣，执行有步骤和时间上限的真实手机任务。",
+  "license": "GPL-3.0-only",
+  "source": "https://github.com/skyjjgw/skivu-device-control",
+  "entry": "index.html",
+  "permissions": ["storage", "device.observe", "device.control", "agent.tasks", "external.open"],
+  "networkDomains": [],
+  "contributes": {"launcher": true, "chatActions": [{"id": "new-task", "title": "手机操控任务"}]}
+}

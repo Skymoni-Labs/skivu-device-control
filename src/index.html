@@ -1,0 +1,21 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>手机操控</title><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<header><div class="mark">↗</div><div><p class="eyebrow">SKIVU · DEVICE CONTROL</p><h1>让想法，落在手机上</h1><p>连接自己的设备，交代一个任务，随时接管。</p></div></header>
+<div id="notice" role="status" aria-live="polite" hidden></div>
+<section class="card"><div class="heading"><span class="number">01</span><h2>连接设备伴侣</h2><span id="connection-state" class="badge">未连接</span></div>
+<p>第一次使用，需要安装独立的 Android 伴侣，并亲自开启无障碍、批准连接。</p>
+<div class="row"><select id="companions" aria-label="设备伴侣"><option value="">先查找设备伴侣</option></select><button id="discover" class="secondary">查找</button></div>
+<div class="row"><button id="connect">连接并请求配对</button><button id="approve" class="secondary">打开伴侣批准</button><button id="refresh" class="secondary">检查连接</button></div>
+<button id="download" class="text-button">获取 Android 伴侣 ↗</button></section>
+<section class="card"><div class="heading"><span class="number">02</span><h2>交代一个任务</h2></div>
+<label for="goal">你希望完成什么</label><textarea id="goal" rows="4" maxlength="4000" placeholder="例如：在浏览器搜索某个主题，读一下结果。或打开测试便签，写下明天的计划。"></textarea>
+<label for="apps">允许操作的软件</label><div class="row"><select id="apps" aria-label="允许操作的软件"><option value="">配对后读取软件列表</option></select><button id="load-apps" class="secondary">读取软件</button></div>
+<p class="hint">本版一次选择一个软件。软件登录、验证码和系统权限由你处理。发送、付款或删除等关键点击会交还给你确认。</p>
+<details><summary>任务预算</summary><div class="budgets"><label>设备操作<input id="max-actions" type="number" min="1" max="30" value="20"></label><label>模型请求<input id="max-rounds" type="number" min="1" max="15" value="15"></label><label>最长秒数<input id="timeout" type="number" min="30" max="600" value="300"></label></div></details>
+<button id="start" class="start">检查范围并开始任务 <span>→</span></button>
+<p class="hint">开始前由宿主展示软件范围和模型预算。任务会把所选软件的文字界面交给当前模型处理。</p></section>
+<section class="card" id="task-panel"><div class="heading"><span class="number">03</span><h2>任务进度</h2><span id="task-state" class="badge">尚未开始</span></div>
+<p id="summary">每一步都以设备真实回执为依据。</p><div class="metrics"><div><strong id="actions">0</strong><span>设备操作</span></div><div><strong id="rounds">0</strong><span>模型请求</span></div></div>
+<div class="row"><button id="task-refresh" class="secondary">刷新状态</button><button id="task-confirm" class="secondary">打开动作确认</button><button id="stop" class="danger">停止任务</button></div></section>
+<footer>真实设备 · 独立授权 · 任务有上限<br>0.1.0 · 文字界面规划 · 截图规划仍在后续阶段</footer>
+</main><script type="module" src="app.js"></script></body></html>
